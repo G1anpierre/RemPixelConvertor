@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import Input from './Input';
 import SetBase from './SetBase';
+import Veredic from './Veredic';
 import './App.css';
 
 const measure = {
@@ -30,7 +31,6 @@ const tryToConvert = ( num , func, base) => {
   if (num === '') {
     return '';
   }
-
 
   const finalVal = func(num, base);
   return finalVal.toString();
@@ -70,6 +70,7 @@ class Calculator extends React.Component {
 
   render() {
 
+    const medida = this.state.measure;
     const val = this.state.value;
     const base = this.state.base;
     
@@ -93,6 +94,11 @@ class Calculator extends React.Component {
           <div className="row justify-content-center">
             <div className="col-12">
                <SetBase onBaseChange={this.onHandleBaseChange} valor={base}/>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-8">
+                <Veredic  valor={val} measure={medida} valorRem={valueRem} valorPixel={valuePixel}/>
             </div>
           </div>
         </div>
